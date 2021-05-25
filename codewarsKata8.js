@@ -240,12 +240,166 @@ function preFizz(n) {
     return arr
 }
 
-console.log(preFizz(16))
+//unchecked
 
+
+//buy 2 get one free special, return the total cost
 function mango(quantity, price) {
-    const actualCost = price * .66
-    return Math.ceil(quantity * actualCost)
+    if (quantity < 3) {
+        return quantity * price
+    }
+    const threes = quantity / 3
+    const discount = Math.floor(threes) * price
+    return (price * quantity) - discount
 }
 
-console.log(mango(9, 5))
+console.log(mango(11, 5))
 
+//swap array args (only 2 items)
+function swapValues(args) {
+    return args.reverse()
+}
+
+// return an array containing all of the strings in the input array except those that match strings in geese
+function gooseFilter(birds) {
+    var geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+    const newGeese = []
+    for (let i = 0; i < birds.length; i++) {
+        if (!geese.includes(birds[i])) {
+            newGeese.push(birds[i])
+        }
+    }
+    return newGeese
+}
+//return birds.filter(b => !geese.includes(b)) is the simpler solution
+console.log(gooseFilter(["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]))
+
+
+//generates a range of integers from min to max, with the step
+function generateRange(min, max, step) {
+    let arr = []
+    for (let i = min; i <= max; i += step) {
+        arr.push(i)
+    }
+    return arr
+}
+
+console.log(generateRange(40, 180, 8))
+
+//find number of sheep that are present
+function countSheep(arrayOfSheep) {
+    let sheep = 0
+    for (let i = 0; i < arrayOfSheep.length; i++) {
+        if (arrayOfSheep[i] === true) {
+            sheep += 1
+        }
+    }
+    return sheep
+}
+
+console.log(countSheep([true, true, true, false]))
+
+
+//code to convert miles per imperial gallon to kilometers per liter
+function converter(mpg) {
+    const perLitre = mpg / 4.54609188
+    const kilometers = (perLitre * 1.609344).toFixed(2)
+    return parseFloat(kilometers)
+}
+
+console.log(converter(20))
+
+//return age of pets bought humanYears ago [humanYears ago, cat age, dog age]
+function humanYearsCatYearsDogYears(humanYears) {
+    if (humanYears === 1) {
+        return [humanYears, 15, 15]
+    } if (humanYears === 2) {
+        return [humanYears, 24, 24]
+    }
+    return [humanYears, (humanYears - 2) * 4 + 24, (humanYears - 2) * 5 + 24]
+}
+
+console.log(humanYearsCatYearsDogYears(10))
+
+//returns an array of integers from n to 1 where n>0
+function reverseSeq(n) {
+    const arr = [...Array(n).keys()]
+    const newArr = []
+    for (let i = 0; i < arr.length; i++) {
+        newArr.push(n - i)
+    }
+    return newArr
+}
+console.log(reverseSeq(14))
+
+//turn number into reversed array
+function digitize(n) {
+    const separateNums = n.toString().split('')
+    const parsedNums = separateNums.map(num => parseInt(num))
+    return parsedNums.reverse()
+    //  return String(n).split('').map(Number).reverse() for a one-liner
+}
+console.log(digitize(89234985))
+
+//return array with all missing numbers added
+function pipeFix(numbers) {
+    const min = Math.min(...numbers)
+    const max = Math.max(...numbers)
+    let arr = []
+    for (let i = min; i <= max; i++) {
+        arr.push(i)
+    }
+    return arr
+}
+console.log(pipeFix([3, 4, 5, 6, 7, 8, 25]))
+
+//sort words in alphabetical order return first word with *** between letters
+function twoSort(s) {
+    const sorted = s.sort()
+    return sorted[0].split('').join('***')
+}
+console.log(twoSort(["bitcoin", "take", "over", "the", "world", "maybe", "who", "knows", "perhaps"]))
+
+//see if any of the numbers are the character codes for lower case vowels
+function isVow(a) {
+    return a.map((num) => {
+        if (num === 97) {
+            return 'a'
+        }
+        if (num === 101) {
+            return 'e'
+        }
+        if (num === 105) {
+            return 'i'
+        }
+        if (num === 111) {
+            return 'o'
+        }
+        if (num === 117) {
+            return 'u'
+        }
+        return num
+    })
+}
+console.log(isVow([118, 117, 120, 121, 117, 98, 122, 97, 120, 106, 104, 116, 113, 114, 113, 120, 106]))
+
+//how many dalmations
+function howManyDalmations(number) {
+    const dogs = ["Hardly any", "More than a handful!", "Woah that's a lot of dogs!", "101 DALMATIONS!!!"]
+
+    return number <= 10 ? dogs[0] : number <= 50 ? dogs[1] : number === 101 ? dogs[3] : dogs[2]
+}
+console.log(howManyDalmations(35))
+
+//find longest word and return its length
+function findLongest(str) {
+    const arrOfWords = str.split(" ")
+    let longest = 0
+    for (let i = 0; i < arrOfWords.length; i++) {
+        if (arrOfWords[i].length > longest) {
+            longest = arrOfWords[i].length
+        }
+    }
+    return longest
+}
+console.log(findLongest("The quick white fox jumped around the massive dog"))
