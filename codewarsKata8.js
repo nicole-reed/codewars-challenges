@@ -248,3 +248,4 @@ function mango(quantity, price) {
 }
 
 console.log(mango(9, 5))
+
