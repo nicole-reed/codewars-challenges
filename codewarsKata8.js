@@ -345,7 +345,7 @@ console.log(digitize(89234985))
 function pipeFix(numbers) {
     const min = Math.min(...numbers)
     const max = Math.max(...numbers)
-    let arr = []
+    const arr = []
     for (let i = min; i <= max; i++) {
         arr.push(i)
     }
@@ -403,3 +403,136 @@ function findLongest(str) {
     return longest
 }
 console.log(findLongest("The quick white fox jumped around the massive dog"))
+
+//sum all items in array (strings and integers)
+function sumMix(arr) {
+    let sum = 0
+    for (let i = 0; i < arr.length; i++) {
+        sum += parseInt(arr[i])
+    }
+    return sum
+}
+
+//see if tail is the same as last letter of bod
+function correctTail(bod, tail) {
+    return bod.charAt(bod.length - 1) === tail
+}
+console.log(correctTail("Fox", "x"))
+
+//make fake binary
+function fakeBinary(numbers) {
+    const arr = numbers.split('')
+    const binary = arr.map(num => num < 5 ? 0 : 1)
+    return binary.join('')
+}
+
+//return the Nth even number
+function nthEven(n) {
+    return (n * 2) - 2
+}
+console.log(nthEven(1342342))
+
+//return array of all integers from a to b
+function between(a, b) {
+    const arr = []
+    for (let i = a; i <= b; i++) {
+        arr.push(i)
+    }
+    return arr
+}
+console.log(between(-10, 9))
+
+// create a function which returns an RNA sequence from the given DNA sequence
+function DNAtoRNA(dna) {
+    return dna.split('').map(letter => letter === 'T' ? 'U' : letter).join('')
+}
+
+console.log(DNAtoRNA('GGCTANNTCAG'))
+
+
+//$40 per day, 3 days $20 discount, 7+ days $50 discount
+function rentalCarCost(day) {
+    const rate = 40
+    if (day < 3) {
+        return day * rate
+    }
+    if (day > 2 && day < 7) {
+        return (day * rate) - 20
+    }
+    return (day * rate) - 50
+}
+console.log(rentalCarCost(7))
+
+//cockroach running speed in km per hour and returns it in cm per second,
+function cockroachSpeed(s) {
+    const cmPerKm = s * 100000
+    const secPerHr = 3600
+    return Math.floor(cmPerKm / secPerHr)
+}
+console.log(cockroachSpeed(1.09))
+
+//return the additive inverse of each number
+function invert(array) {
+    return array.map(num => num * -1)
+}
+console.log(invert([1, -2, 3, -4, 5]))
+
+//returns all numbers which are divisible by the given divisor
+function divisibleBy(numbers, divisor) {
+    const divisibles = []
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] % divisor === 0) {
+            divisibles.push(numbers[i])
+        }
+    }
+    return divisibles
+}
+console.log(divisibleBy([1, 2, 3, 4, 5, 6], 2))
+
+
+//how many petals on the flower determine the phrase youre left with
+function howMuchILoveYou(petals) {
+    const phrases = ['I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all', 'zero %']
+    return phrases[(petals - 1) % phrases.length]
+}
+console.log(howMuchILoveYou(7))
+
+//true or false- is the number divisible by both a and b?
+function isDivideBy(number, a, b) {
+    return number % a === 0 && number % b === 0
+}
+console.log(isDivideBy(42, 6, 9))
+
+//return an array with 2 items, [number of positive vals, sum of negative vals]
+function countPositivesSumNegatives(input) {
+    if (!input || input == "") {
+        return []
+    }
+    let count = 0
+    let sum = 0
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] > 0) {
+            count += 1
+        }
+        if (input[i] < 0) {
+            sum += input[i]
+        }
+    }
+
+    return [count, sum]
+}
+console.log(countPositivesSumNegatives([3, 5, 6, 1, -9, -34, 12, -7, 33]))
+
+//combine 2 arrays and sort them
+function mergeArrays(arr1, arr2) {
+    const combined = arr1.concat(arr2).sort((a, b) => a - b)
+    const noDuplicates = []
+    for (let i = 0; i < combined.length; i++) {
+        if (combined[i] !== combined[i - 1]) {
+            noDuplicates.push(combined[i])
+        }
+    }
+    return noDuplicates
+}
+console.log(mergeArrays([1, 3, 5, 7, 9, 11, 12], [1, 2, 3, 4, 5, 10, 12]))
+
